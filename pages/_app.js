@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <div style={{ margin: "0 auto" }}>
             <Top />
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
         </div>
     );
 }
