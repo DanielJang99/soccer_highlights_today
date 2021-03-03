@@ -3,20 +3,9 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VideoList from "../components/VideoList";
-import { Divider, Header } from "semantic-ui-react";
+import { Divider, Header, Loader } from "semantic-ui-react";
 
-export default function Home() {
-    const [list, setList] = useState([]);
-    const API_URL = "https://www.scorebat.com/video-api/v1";
-    async function getData() {
-        const res = await axios.get(API_URL);
-        setList(res.data);
-        console.log(list);
-    }
-    useEffect(() => {
-        getData();
-    }, []);
-
+export default function Home({ matches }) {
     return (
         <div style={{ width: "90%", margin: "auto" }}>
             <Head>
@@ -26,7 +15,17 @@ export default function Home() {
                 Latest Games
             </Header>
             <Divider />
-            <VideoList list={list} />
+            <VideoList list={matches} />
         </div>
     );
+}
+
+export async function getStaticProps() {
+    const res = await axios.get("https://www.scorebat.com/video-api/v1");
+    const data = res.data;
+    return {
+        props: {
+            matches: data,
+        },
+    };
 }

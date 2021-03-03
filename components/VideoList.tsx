@@ -1,4 +1,4 @@
-import { Grid, Image } from "semantic-ui-react";
+import { Grid, Image, Flag } from "semantic-ui-react";
 import styles from "./VideoList.module.css";
 import Link from "next/link";
 
@@ -22,9 +22,25 @@ export default function VideoList({ list }) {
                                             >
                                                 {match.title}
                                             </strong>
-                                            <p style={{ color: "#999" }}>
-                                                {match.competition.name}
-                                            </p>
+
+                                            <div>
+                                                <Flag
+                                                    name={match.competition.name
+                                                        .split(":")[0]
+                                                        .toLowerCase()}
+                                                />
+                                                <div
+                                                    style={{
+                                                        color: "#999",
+                                                    }}
+                                                >
+                                                    {
+                                                        match.competition.name.split(
+                                                            ":"
+                                                        )[1]
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </a>

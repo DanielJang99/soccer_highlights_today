@@ -1,27 +1,43 @@
 import { Menu, Segment } from "semantic-ui-react";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
     const [state, setState] = useState({ activeItem: "home" });
-    const handleItemClick = (e, { name }) => setState({ activeItem: name });
+    const router = useRouter();
+    let activeItem;
+    if (router.pathname === "/") {
+        activeItem = "home";
+    } else if (router.pathname === "/about") {
+        activeItem = "about";
+    }
+    const handleItemClick = (e, { name }) => {
+        if (name == "home") {
+            router.push("/");
+        } else if (name == "about") {
+            router.push("/about");
+        }
+    };
     return (
         <div style={{ width: "98%", margin: "auto", paddingTop: 15 }}>
             <Segment inverted>
                 <Menu inverted pointing secondary>
                     <Menu.Item
                         name="home"
-                        active={state.activeItem === "home"}
+                        active={activeItem === "home"}
                         onClick={handleItemClick}
                     />
                     <Menu.Item
                         name="about"
-                        active={state.activeItem === "about"}
+                        active={activeItem === "about"}
                         onClick={handleItemClick}
                     />
                     <Menu.Item
                         name="admin"
-                        active={state.activeItem === "admin"}
-                        onClick={handleItemClick}
+                        active={activeItem === "admin"}
+                        onClick={() => {
+                            router.push("/admin");
+                        }}
                     />
                 </Menu>
             </Segment>
