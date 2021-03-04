@@ -20,7 +20,7 @@ export default function Home({ matches }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
     const data = res.data;
     return {

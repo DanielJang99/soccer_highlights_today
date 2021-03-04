@@ -1,6 +1,7 @@
 import { Menu, Segment } from "semantic-ui-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { route } from "next/dist/next-server/server/router";
 
 export default function Navbar() {
     const [state, setState] = useState({ activeItem: "home" });
@@ -10,6 +11,8 @@ export default function Navbar() {
         activeItem = "home";
     } else if (router.pathname === "/about") {
         activeItem = "about";
+    } else if (router.pathname === "/admin") {
+        activeItem = "admin";
     }
     const handleItemClick = (e, { name }) => {
         if (name == "home") {
