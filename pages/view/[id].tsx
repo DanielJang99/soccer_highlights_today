@@ -1,9 +1,13 @@
+import React, { useContext } from "react";
 import axios from "axios";
 import Match from "../../components/Match";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Loader } from "semantic-ui-react";
-const Post = ({ match }) => {
+import { LoadedMatches } from "../index";
+const Post = () => {
+    const match = useContext(LoadedMatches);
+    console.log(match);
     const router = useRouter();
     if (router.isFallback) {
         return <Loader />;
@@ -36,26 +40,26 @@ export default Post;
 //         },
 //     };
 // }
-export async function getStaticPaths() {
-    const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data = res.data;
-    return {
-        paths: data.slice(0, 4).map((match, index) => ({
-            params: {
-                id: index.toString(),
-            },
-        })),
-        fallback: true,
-    };
-}
+// export async function getStaticPaths() {
+//     const res = await axios.get("https://www.scorebat.com/video-api/v1");
+//     const data = res.data;
+//     return {
+//         paths: data.slice(0, 4).map((match, index) => ({
+//             params: {
+//                 id: index.toString(),
+//             },
+//         })),
+//         fallback: true,
+//     };
+// }
 
-export async function getStaticProps(context) {
-    const id = context.params.id;
-    const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data = res.data[id];
-    return {
-        props: {
-            match: data,
-        },
-    };
-}
+// export async function getStaticProps(context) {
+//     const id = context.params.id;
+//     const res = await axios.get("https://www.scorebat.com/video-api/v1");
+//     const data = res.data[id];
+//     return {
+//         props: {
+//             match: data,
+//         },
+//     };
+// }

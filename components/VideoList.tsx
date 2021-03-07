@@ -1,8 +1,11 @@
+import React, { useContext } from "react";
 import { Grid, Image, Flag } from "semantic-ui-react";
 import styles from "./VideoList.module.css";
 import Link from "next/link";
+import { LoadedMatches } from "../pages/index";
 
-export default function VideoList({ list }) {
+export default function VideoList() {
+    const list = useContext(LoadedMatches);
     return (
         <div>
             <Grid columns={3}>

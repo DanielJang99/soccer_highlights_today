@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../components/navbar";
 
 function MyApp({ Component, pageProps }) {
+    // console.log(matches);
     return (
         <div
             style={{

@@ -1,7 +1,6 @@
 import { Menu, Segment, Dropdown } from "semantic-ui-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { route } from "next/dist/next-server/server/router";
 
 export default function Navbar() {
     const [state, setState] = useState({ activeItem: "home" });
@@ -24,7 +23,6 @@ export default function Navbar() {
     return (
         <div style={{ margin: "auto" }}>
             <Segment>
-                {/* <Menu inverted pointing secondary color="green"> */}
                 <Menu secondary size="large">
                     <Menu.Item
                         name="home"
@@ -60,7 +58,6 @@ export default function Navbar() {
                     </Dropdown>
                 </Menu>
             </Segment>
-            {/* <img src="https://cdn.hipwallpaper.com/m/78/51/yon2i8.jpg" /> */}
         </div>
     );
 }
