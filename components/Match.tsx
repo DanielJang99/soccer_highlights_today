@@ -12,13 +12,7 @@ export default function Match({ match }) {
                         content={match.title}
                         subheader={match.competition.name}
                     />
-                    <Header>
-                        <Flag
-                            name={match.competition.name
-                                .split(":")[0]
-                                .toLowerCase()}
-                        />
-                    </Header>
+
                     <div
                         style={{
                             width: "60%",
@@ -28,11 +22,6 @@ export default function Match({ match }) {
                     >
                         {parse(match.embed)}
                     </div>
-                    <Flag
-                        name={match.competition.name
-                            .split(":")[0]
-                            .toLowerCase()}
-                    />
                 </div>
             )}
         </>

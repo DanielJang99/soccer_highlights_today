@@ -4,10 +4,14 @@ import Match from "../../components/Match";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Loader } from "semantic-ui-react";
-import { LoadedMatches } from "../index";
-const Post = () => {
-    const match = useContext(LoadedMatches);
-    console.log(match);
+import { GetServerSideProps } from "next";
+import { MatchProps } from "../index";
+
+interface PostProps {
+    match: MatchProps;
+}
+
+const Post = ({ match }: PostProps) => {
     const router = useRouter();
     if (router.isFallback) {
         return <Loader />;
@@ -30,16 +34,16 @@ const Post = () => {
 
 export default Post;
 
-// export async function getServerSideProps(context) {
-//     const id = context.params.id;
-//     const res = await axios.get("https://www.scorebat.com/video-api/v1");
-//     const data = res.data[id];
-//     return {
-//         props: {
-//             match: data,
-//         },
-//     };
-// }
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const id: number | undefined = Number(context?.params?.id);
+    const res = await axios.get("https://www.scorebat.com/video-api/v1");
+    const data: MatchProps | undefined = res.data[id];
+    return {
+        props: {
+            match: data,
+        },
+    };
+};
 // export async function getStaticPaths() {
 //     const res = await axios.get("https://www.scorebat.com/video-api/v1");
 //     const data = res.data;

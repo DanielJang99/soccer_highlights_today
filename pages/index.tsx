@@ -1,14 +1,39 @@
-import React from "react";
+import React, { createContext } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import VideoList from "../components/VideoList";
 import { Divider, Header, Loader } from "semantic-ui-react";
-import CarouselFunction from "../components/Carousel";
+import DisplayCarousel from "../components/Carousel";
+import { GetServerSideProps } from "next";
 
-export const LoadedMatches = React.createContext(null);
+export interface MatchProps {
+    competition: {
+        name: string;
+        id: number;
+        url: string;
+    };
+    date: string;
+    // embed: HTMLElement;
+    embed: string;
+    side1: {
+        name: string;
+        url: string;
+    };
+    side2: {
+        name: string;
+        url: string;
+    };
+    thumbnail: string;
+    title: string;
+    url: string;
+}
+// export interface HomeProps {
+//     matches?: MatchProps[]
+// }
+export const LoadedMatches = createContext<MatchProps[] | null>(null);
 
-export default function Home({ matches }) {
+export default function Home({ matches }: MatchProps[] | undefined) {
     const bigMathchesID = [15, 13, 14, 11];
     return (
         <LoadedMatches.Provider value={matches}>
@@ -16,9 +41,9 @@ export default function Home({ matches }) {
                 <Head>
                     <title>⚽ Soccer Highlights Today</title>
                 </Head>
-                <CarouselFunction
+                <DisplayCarousel
                     list={matches
-                        .filter((match) =>
+                        ?.filter((match: MatchProps) =>
                             bigMathchesID.includes(match.competition.id)
                         )
                         .slice(0, 4)}
@@ -34,12 +59,12 @@ export default function Home({ matches }) {
     );
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data = res.data;
+    const data: MatchProps[] | undefined = await res.data;
     return {
         props: {
             matches: data,
         },
     };
-}
+};

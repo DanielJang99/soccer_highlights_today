@@ -1,16 +1,34 @@
 import React, { useContext } from "react";
-import { Grid, Image, Flag } from "semantic-ui-react";
+import { Grid, Image, Flag, FlagNameValues } from "semantic-ui-react";
 import styles from "./VideoList.module.css";
 import Link from "next/link";
 import { LoadedMatches } from "../pages/index";
 
+type FlagProps = {
+    name: FlagNameValues;
+};
+
 export default function VideoList() {
     const list = useContext(LoadedMatches);
+    function GetCountryFlag(query: string) {
+        if (query === "brasil") {
+            console.log("hello bra");
+            return "br";
+        } else if (
+            query.includes("champions league") ||
+            query.includes("europa league")
+        ) {
+            return false;
+        } else {
+            return query;
+        }
+    }
+
     return (
         <div>
             <Grid columns={3}>
                 <Grid.Row>
-                    {list.map((match, index) => (
+                    {list?.map((match, index) => (
                         <Grid.Column key={index}>
                             <Link href={`/view/${index}`}>
                                 <a>
@@ -27,11 +45,34 @@ export default function VideoList() {
                                             </strong>
 
                                             <div>
-                                                <Flag
+                                                {GetCountryFlag(
+                                                    match.competition.name
+                                                        .split(":")[0]
+                                                        .toLowerCase()
+                                                ) ? (
+                                                    <Flag
+                                                        name={GetCountryFlag(
+                                                            match.competition.name
+                                                                .split(":")[0]
+                                                                .toLowerCase()
+                                                        )}
+                                                    />
+                                                ) : (
+                                                    <div
+                                                        style={{
+                                                            color: "#999",
+                                                        }}
+                                                    >
+                                                        {match.competition.name
+                                                            .split(":")[0]
+                                                            .toLowerCase()}
+                                                    </div>
+                                                )}
+                                                {/* <Flag
                                                     name={match.competition.name
                                                         .split(":")[0]
                                                         .toLowerCase()}
-                                                />
+                                                /> */}
                                                 <div
                                                     style={{
                                                         color: "#999",

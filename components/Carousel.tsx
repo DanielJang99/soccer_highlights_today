@@ -1,40 +1,50 @@
 import React, { useState, useContext } from "react";
 import { Carousel } from "react-bootstrap";
 import Link from "next/link";
-import { List, Header } from "semantic-ui-react";
-import { LoadedMatches } from "../pages/index";
+import { List, Header, ListItemProps } from "semantic-ui-react";
+import { LoadedMatches, MatchProps } from "../pages/index";
 
-export default function CarouselFunction({ list }) {
-    const [SelectedIndex, setSelectedIndex] = useState(0);
-    const matches = useContext(LoadedMatches);
+interface ListProps {
+    list: MatchProps[] | undefined;
+}
 
-    const handleSelect = (selectedIndex, e) => {
+export default function DisplayCarousel({ list }: ListProps) {
+    const [SelectedIndex, setSelectedIndex] = useState<number>(0);
+    const matches: MatchProps[] | null = useContext(LoadedMatches);
+
+    const handleSelect = (
+        selectedIndex: number,
+        e: Record<string, unknown> | null | undefined
+    ) => {
         setSelectedIndex(selectedIndex);
     };
 
-    const handleClick = (e, { index }) => {
+    const handleClick = (
+        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+        { index }: ListItemProps
+    ) => {
         setSelectedIndex(index);
     };
     return (
-        <div style={{ height: "83vh" }}>
+        <div>
             {list && (
-                <div style={{ margin: "0 auto" }}>
+                <div
+                    style={{ display: "grid", gridTemplateColumns: "2fr 1fr" }}
+                >
                     <div
                         style={{
-                            width: "60%",
-                            paddingTop: 10,
-                            float: "left",
+                            paddingTop: 20,
                         }}
                     >
                         <Carousel
                             activeIndex={SelectedIndex}
                             onSelect={handleSelect}
                         >
-                            {list.map((game) => {
+                            {list.map((game: MatchProps) => {
                                 return (
                                     <Carousel.Item>
                                         <Link
-                                            href={`/view/${matches.indexOf(
+                                            href={`/view/${matches?.indexOf(
                                                 game
                                             )}`}
                                         >
@@ -51,16 +61,11 @@ export default function CarouselFunction({ list }) {
                             })}
                         </Carousel>
                     </div>
-                    <div
-                        style={{
-                            float: "left",
-                            paddingLeft: 100,
-                            paddingTop: 150,
-                        }}
-                    >
-                        <Header size="huge">Big Games Today🔥</Header>
+
+                    <div style={{ paddingLeft: 40, paddingTop: 100 }}>
+                        <Header size="huge">Big Games Today 🔥</Header>
                         <List selection bulleted size="massive">
-                            {list.map((game, index) => {
+                            {list.map((game: MatchProps, index: number) => {
                                 return (
                                     <List.Item
                                         index={index}

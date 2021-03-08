@@ -1,4 +1,4 @@
-import { Menu, Segment, Dropdown } from "semantic-ui-react";
+import { Menu, Segment, Dropdown, MenuItemProps } from "semantic-ui-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -13,7 +13,10 @@ export default function Navbar() {
     } else if (router.pathname === "/admin") {
         activeItem = "admin";
     }
-    const handleItemClick = (e, { name }) => {
+    const handleItemClick = (
+        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+        { name }: MenuItemProps
+    ) => {
         if (name == "home") {
             router.push("/");
         } else if (name == "about") {
