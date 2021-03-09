@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Match from "../../components/Match";
 import Head from "next/head";
@@ -8,24 +8,20 @@ import { GetServerSideProps } from "next";
 import { MatchProps } from "../index";
 
 interface PostProps {
-    match: MatchProps;
+    match: MatchProps[];
 }
 
 const Post = ({ match }: PostProps) => {
-    const router = useRouter();
-    if (router.isFallback) {
-        return <Loader />;
-    }
     return (
         <>
             {match && (
                 <>
                     <Head>
-                        <title>{match.title}</title>
+                        <title>{match[0].title}</title>
                     </Head>
                     <div style={{ width: "98%", margin: "0 auto" }}>
-                        <Match match={match} />
-                    </div>
+                        <Match match={match[0]} />
+                    </div>{" "}
                 </>
             )}
         </>
@@ -35,12 +31,19 @@ const Post = ({ match }: PostProps) => {
 export default Post;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const id: number | undefined = Number(context?.params?.id);
+    if (!context.req) {
+        return {
+            props: {
+                match: [],
+            },
+        };
+    }
+    const id: number = Number(context?.params?.id);
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data: MatchProps | undefined = res.data[id];
+    const data: MatchProps = res.data[id];
     return {
         props: {
-            match: data,
+            match: [data],
         },
     };
 };

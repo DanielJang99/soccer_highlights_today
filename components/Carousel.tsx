@@ -40,9 +40,9 @@ export default function DisplayCarousel({ list }: ListProps) {
                             activeIndex={SelectedIndex}
                             onSelect={handleSelect}
                         >
-                            {list.map((game: MatchProps) => {
+                            {list.map((game: MatchProps, index) => {
                                 return (
-                                    <Carousel.Item>
+                                    <Carousel.Item key={index}>
                                         <Link
                                             href={`/view/${matches?.indexOf(
                                                 game

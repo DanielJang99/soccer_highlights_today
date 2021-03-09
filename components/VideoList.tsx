@@ -4,16 +4,15 @@ import styles from "./VideoList.module.css";
 import Link from "next/link";
 import { LoadedMatches } from "../pages/index";
 
-type FlagProps = {
-    name: FlagNameValues;
-};
-
 export default function VideoList() {
     const list = useContext(LoadedMatches);
-    function GetCountryFlag(query: string) {
+    function GetCountryFlag(
+        query: string | FlagNameValues
+    ): boolean | FlagNameValues | string {
         if (query === "brasil") {
-            console.log("hello bra");
             return "br";
+        } else if (query === "korea republic") {
+            return "south korea";
         } else if (
             query.includes("champions league") ||
             query.includes("europa league")
@@ -68,11 +67,6 @@ export default function VideoList() {
                                                             .toLowerCase()}
                                                     </div>
                                                 )}
-                                                {/* <Flag
-                                                    name={match.competition.name
-                                                        .split(":")[0]
-                                                        .toLowerCase()}
-                                                /> */}
                                                 <div
                                                     style={{
                                                         color: "#999",

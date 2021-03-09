@@ -12,6 +12,8 @@ export default function Navbar() {
         activeItem = "about";
     } else if (router.pathname === "/admin") {
         activeItem = "admin";
+    } else if (router.pathname === "/leagues") {
+        activeItem = "leagues";
     }
     const handleItemClick = (
         e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -49,14 +51,41 @@ export default function Navbar() {
                             router.push("/admin");
                         }}
                     />
-                    <Dropdown item text="Competitions">
+                    <Dropdown
+                        item
+                        text="Competitions"
+                        name="leagues"
+                        active={activeItem === "leagues"}
+                    >
                         <Dropdown.Menu>
-                            <Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={() => {
+                                    router.push("/leagues/15");
+                                }}
+                            >
                                 English Premier League
                             </Dropdown.Item>
-                            <Dropdown.Item>La Liga</Dropdown.Item>
-                            <Dropdown.Item>Bundesliga</Dropdown.Item>
-                            <Dropdown.Item>Serie A</Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={() => {
+                                    router.push("/leagues/14");
+                                }}
+                            >
+                                La Liga
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={() => {
+                                    router.push("/leagues/11");
+                                }}
+                            >
+                                Bundesliga
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={() => {
+                                    router.push("/leagues/13");
+                                }}
+                            >
+                                Serie A
+                            </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Menu>

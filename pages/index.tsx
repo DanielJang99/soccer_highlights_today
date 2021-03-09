@@ -14,7 +14,6 @@ export interface MatchProps {
         url: string;
     };
     date: string;
-    // embed: HTMLElement;
     embed: string;
     side1: {
         name: string;
@@ -28,38 +27,48 @@ export interface MatchProps {
     title: string;
     url: string;
 }
-// export interface HomeProps {
-//     matches?: MatchProps[]
-// }
+interface HomeProps {
+    matches?: MatchProps[];
+}
 export const LoadedMatches = createContext<MatchProps[] | null>(null);
 
-export default function Home({ matches }: MatchProps[] | undefined) {
+export default function Home({ matches }: HomeProps) {
     const bigMathchesID = [15, 13, 14, 11];
-    return (
-        <LoadedMatches.Provider value={matches}>
-            <div style={{ width: "90%", margin: "auto" }}>
-                <Head>
-                    <title>⚽ Soccer Highlights Today</title>
-                </Head>
-                <DisplayCarousel
-                    list={matches
-                        ?.filter((match: MatchProps) =>
-                            bigMathchesID.includes(match.competition.id)
-                        )
-                        .slice(0, 4)}
-                />
+    if (matches) {
+        return (
+            <LoadedMatches.Provider value={matches}>
+                <div style={{ width: "90%", margin: "auto" }}>
+                    <Head>
+                        <title>⚽ Soccer Highlights Today</title>
+                    </Head>
+                    <DisplayCarousel
+                        list={matches
+                            ?.filter((match: MatchProps) =>
+                                bigMathchesID.includes(match.competition.id)
+                            )
+                            .slice(0, 4)}
+                    />
 
-                <Header as="h2" style={{ paddingTop: 35 }}>
-                    Latest Games
-                </Header>
-                <Divider />
-                <VideoList />
-            </div>
-        </LoadedMatches.Provider>
-    );
+                    <Header as="h2" style={{ paddingTop: 35 }}>
+                        Latest Games
+                    </Header>
+                    <Divider />
+                    <VideoList />
+                </div>
+            </LoadedMatches.Provider>
+        );
+    }
+    return <Loader />;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    if (!ctx.req) {
+        return {
+            props: {
+                matches: [],
+            },
+        };
+    }
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
     const data: MatchProps[] | undefined = await res.data;
     return {
