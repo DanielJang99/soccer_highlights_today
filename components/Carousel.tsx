@@ -2,15 +2,20 @@ import React, { useState, useContext } from "react";
 import { Carousel } from "react-bootstrap";
 import Link from "next/link";
 import { List, Header, ListItemProps } from "semantic-ui-react";
-import { LoadedMatches, MatchProps } from "../pages/index";
+import { LoadedMatches } from "../pages/index";
+import MatchProps from "../api/interface";
+import { MajorTeams } from "../FootballData";
 
-interface ListProps {
-    list: MatchProps[] | undefined;
-}
-
-export default function DisplayCarousel({ list }: ListProps) {
+export default function DisplayCarousel() {
     const [SelectedIndex, setSelectedIndex] = useState<number>(0);
     const matches: MatchProps[] | null = useContext(LoadedMatches);
+    const list = matches
+        ?.filter(
+            (game) =>
+                MajorTeams.includes(game.side1.name) ||
+                MajorTeams.includes(game.side2.name)
+        )
+        .slice(0, 5);
 
     const handleSelect = (
         selectedIndex: number,
@@ -63,7 +68,7 @@ export default function DisplayCarousel({ list }: ListProps) {
                     </div>
 
                     <div style={{ paddingLeft: 40, paddingTop: 100 }}>
-                        <Header size="huge">Big Games Today 🔥</Header>
+                        <Header size="huge">Major Games This Week 🔥</Header>
                         <List selection bulleted size="massive">
                             {list.map((game: MatchProps, index: number) => {
                                 return (

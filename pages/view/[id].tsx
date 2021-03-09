@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Loader } from "semantic-ui-react";
 import { GetServerSideProps } from "next";
-import { MatchProps } from "../index";
+import MatchProps from "../../api/interface";
 
 interface PostProps {
     match: MatchProps[];
