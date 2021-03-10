@@ -17,4 +17,5 @@ export default interface MatchProps {
     thumbnail: string;
     title: string;
     url: string;
+    videos: Array<{ title: string; embed: string }>;
 }

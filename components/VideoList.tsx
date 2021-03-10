@@ -15,7 +15,8 @@ export default function VideoList() {
             return "south korea";
         } else if (
             query.includes("champions league") ||
-            query.includes("europa league")
+            query.includes("europa league") ||
+            query.includes("copa libertadores")
         ) {
             return false;
         } else {
@@ -28,7 +29,7 @@ export default function VideoList() {
             <Grid columns={3}>
                 <Grid.Row>
                     {list?.map((match, index) => (
-                        <Grid.Column key={index}>
+                        <Grid.Column>
                             <Link href={`/view/${index}`}>
                                 <a>
                                     <div className={styles.HighlightDiv}>
@@ -62,9 +63,11 @@ export default function VideoList() {
                                                             color: "#999",
                                                         }}
                                                     >
-                                                        {match.competition.name
-                                                            .split(":")[0]
-                                                            .toLowerCase()}
+                                                        {
+                                                            match.competition.name.split(
+                                                                ":"
+                                                            )[0]
+                                                        }
                                                     </div>
                                                 )}
                                                 <div

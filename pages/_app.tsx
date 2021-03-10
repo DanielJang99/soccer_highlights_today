@@ -7,7 +7,7 @@ import NProgress from "nprogress";
 import { Router } from "next/router";
 import "nprogress/nprogress.css";
 
-NProgress.configure({ easing: "ease", speed: 300 });
+NProgress.configure({ easing: "ease", speed: 550 });
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });
