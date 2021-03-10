@@ -25,7 +25,7 @@ export default function League({ LeagueGames }: LeagueGameProps) {
                 <title>{LeagueName}</title>
             </Head>
             <div style={{ width: "90%", margin: "auto" }}>
-                <Header as="h2" style={{ paddingTop: 30 }}>
+                <Header as="h2" style={{ paddingTop: "1.875rem" }}>
                     {LeagueName}
                 </Header>
                 <Divider />
@@ -40,7 +40,7 @@ export default function League({ LeagueGames }: LeagueGameProps) {
                                         <div className={styles.HighlightDiv}>
                                             <Image src={game.thumbnail} />
                                             <strong
-                                                style={{ fontSize: "18px" }}
+                                                style={{ fontSize: "1.125rem" }}
                                             >
                                                 {game.title}
                                             </strong>

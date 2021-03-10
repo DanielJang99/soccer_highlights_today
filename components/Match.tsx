@@ -10,7 +10,7 @@ export default function Match({ match }: SingleMatchProps) {
     return (
         <>
             {match.embed && (
-                <div style={{ paddingTop: 10, paddingLeft: 10 }}>
+                <div style={{ paddingTop: "0.625em", paddingLeft: "0.625em" }}>
                     <Header as="h2" content={match.title} floated="left" />
                     <Header
                         as="h2"
@@ -25,7 +25,7 @@ export default function Match({ match }: SingleMatchProps) {
                             width: "60%",
                             height: "60%",
                             margin: "0 auto",
-                            paddingTop: 65,
+                            paddingTop: "6.5em",
                         }}
                     >
                         {parse(match.videos[0].embed)}

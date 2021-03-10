@@ -37,7 +37,7 @@ export default function VideoList() {
                                             src={match.thumbnail}
                                             alt="/images/football.png"
                                         />
-                                        <div style={{ paddingTop: 5 }}>
+                                        <div style={{ paddingTop: "0.45rem" }}>
                                             <strong
                                                 style={{ fontSize: "18px" }}
                                             >

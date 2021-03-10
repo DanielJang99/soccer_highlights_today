@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import NProgress from "nprogress";
 import { Router } from "next/router";
 import "nprogress/nprogress.css";
+import Head from "next/head";
 
 NProgress.configure({ easing: "ease", speed: 550 });
 Router.events.on("routeChangeStart", () => {
@@ -20,14 +21,19 @@ Router.events.on("routeChangeError", () => {
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <div
-            style={{
-                margin: "0 auto",
-            }}
-        >
-            <Navbar />
-            <Component {...pageProps} />
-        </div>
+        <>
+            <Head>
+                <link rel="shortcut icon" href="favicon-16x16.png" />
+            </Head>
+            <div
+                style={{
+                    margin: "0 auto",
+                }}
+            >
+                <Navbar />
+                <Component {...pageProps} />
+            </div>
+        </>
     );
 }
 

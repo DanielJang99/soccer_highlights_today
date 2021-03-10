@@ -35,7 +35,7 @@ export default function Navbar() {
                         onClick={handleItemClick}
                     >
                         <img src="/images/football.png" alt="logo" />
-                        <div style={{ paddingLeft: "11px" }}>
+                        <div style={{ paddingLeft: "0.625rem" }}>
                             Soccer Highlights Today
                         </div>
                     </Menu.Item>

@@ -38,7 +38,7 @@ export default function DisplayCarousel() {
                 >
                     <div
                         style={{
-                            paddingTop: 20,
+                            paddingTop: "1.25rem",
                         }}
                     >
                         <Carousel
@@ -67,7 +67,9 @@ export default function DisplayCarousel() {
                         </Carousel>
                     </div>
 
-                    <div style={{ paddingLeft: 40, paddingTop: 100 }}>
+                    <div
+                        style={{ paddingLeft: "2.5rem", paddingTop: "6.25rem" }}
+                    >
                         <Header size="huge">Major Games This Week 🔥</Header>
                         <List selection bulleted size="massive">
                             {list.map((game: MatchProps, index: number) => {

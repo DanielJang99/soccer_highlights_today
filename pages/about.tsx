@@ -6,17 +6,23 @@ export default function About() {
             <Head>
                 <title>About</title>
             </Head>
-            <div style={{ paddingLeft: 20, paddingTop: 20 }}>
+            <div style={{ paddingTop: 20, textAlign: "center" }}>
                 <Header as="h1">About This Page</Header>
             </div>
-            <div style={{ paddingTop: 20, paddingLeft: 20, display: "flex" }}>
-                <a href="https://github.com/DanielJang99/soccer_highlights_today">
-                    <div>
-                        <img src="images/githubMark.png" height="80" />
-                    </div>
-                </a>
-                <div style={{ paddingLeft: 15, paddingTop: 15 }}>
-                    <Container>
+            <div
+                style={{
+                    paddingTop: "1.25rem",
+                    textAlign: "center",
+                }}
+            >
+                <div
+                    style={{
+                        maxWidth: "60ch",
+                        fontSize: "1.5rem",
+                        display: "inline-block",
+                    }}
+                >
+                    <Container textAlign="justified">
                         Built with Next.js, boostrap, and semantic-ui,{" "}
                         <b>Soccer Highlights Today</b> uses API from{" "}
                         <a href="https://www.scorebat.com/video-api">
@@ -33,11 +39,14 @@ export default function About() {
                         or the github icon to go to the repository for this
                         project.
                     </Container>
+                    <a href="https://github.com/DanielJang99/soccer_highlights_today">
+                        <img src="images/githubMark.png" height="130" />
+                    </a>
                 </div>
             </div>
-            <div style={{ paddingLeft: 20, paddingTop: 50 }}>
+            <div style={{ textAlign: "center", paddingTop: 50 }}>
                 <Header as="h2">Feedback</Header>
-                <div style={{ fontSize: 15 }}>
+                <div style={{ fontSize: "1.2rem" }}>
                     If you have any suggestions or inquires, please feel free to
                     contact <a href="mailto: daniel.jang.0621@gmail.com">me</a>{" "}
                     with an email :)

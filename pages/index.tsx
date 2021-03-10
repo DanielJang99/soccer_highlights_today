@@ -19,10 +19,10 @@ export default function Home({ matches }: HomeProps) {
             <LoadedMatches.Provider value={matches}>
                 <div style={{ width: "90%", margin: "auto" }}>
                     <Head>
-                        <title>⚽ Soccer Highlights Today</title>
+                        <title>Soccer Highlights Today</title>
                     </Head>
                     <DisplayCarousel />
-                    <Header as="h2" style={{ paddingTop: 35 }}>
+                    <Header as="h2" style={{ paddingTop: "2.2rem" }}>
                         Latest Games
                     </Header>
                     <Divider />
