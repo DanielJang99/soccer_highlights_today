@@ -5,7 +5,7 @@ import axios from "axios";
 import VideoList from "../components/VideoList";
 import { Divider, Header, Loader } from "semantic-ui-react";
 import DisplayCarousel from "../components/Carousel";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import MatchProps from "../api/interface";
 
 interface HomeProps {
@@ -34,19 +34,31 @@ export default function Home({ matches }: HomeProps) {
     return <Loader />;
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    if (!ctx.req) {
-        return {
-            props: {
-                matches: [],
-            },
-        };
-    }
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//     if (!ctx.req) {
+//         return {
+//             props: {
+//                 matches: [],
+//             },
+//         };
+//     }
+//     const res = await axios.get("https://www.scorebat.com/video-api/v1");
+//     const data: MatchProps[] | undefined = await res.data;
+//     return {
+//         props: {
+//             matches: data,
+//         },
+//     };
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data: MatchProps[] | undefined = await res.data;
+    const data: MatchProps[] = await res.data;
+
     return {
         props: {
             matches: data,
         },
+        revalidate: 300,
     };
 };

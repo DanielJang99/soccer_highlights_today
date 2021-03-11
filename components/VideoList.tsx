@@ -45,7 +45,7 @@ export default function VideoList() {
                                             </strong>
 
                                             <div>
-                                                {GetCountryFlag(
+                                                {/* {GetCountryFlag(
                                                     match.competition.name
                                                         .split(":")[0]
                                                         .toLowerCase()
@@ -69,7 +69,7 @@ export default function VideoList() {
                                                             )[0]
                                                         }
                                                     </div>
-                                                )}
+                                                )} */}
                                                 <div
                                                     style={{
                                                         color: "#999",
