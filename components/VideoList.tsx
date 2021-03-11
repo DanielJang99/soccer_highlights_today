@@ -3,6 +3,7 @@ import { Grid, Image, Flag, FlagNameValues } from "semantic-ui-react";
 import styles from "./VideoList.module.css";
 import Link from "next/link";
 import { LoadedMatches } from "../pages/index";
+import DisplayFlag from "./Flag";
 
 export default function VideoList() {
     const list = useContext(LoadedMatches);
@@ -45,31 +46,13 @@ export default function VideoList() {
                                             </strong>
 
                                             <div>
-                                                {/* {GetCountryFlag(
-                                                    match.competition.name
-                                                        .split(":")[0]
-                                                        .toLowerCase()
-                                                ) ? (
-                                                    <Flag
-                                                        name={GetCountryFlag(
-                                                            match.competition.name
-                                                                .split(":")[0]
-                                                                .toLowerCase()
-                                                        )}
-                                                    />
-                                                ) : (
-                                                    <div
-                                                        style={{
-                                                            color: "#999",
-                                                        }}
-                                                    >
-                                                        {
-                                                            match.competition.name.split(
-                                                                ":"
-                                                            )[0]
-                                                        }
-                                                    </div>
-                                                )} */}
+                                                <DisplayFlag
+                                                    country={
+                                                        match.competition.name.split(
+                                                            ":"
+                                                        )[0]
+                                                    }
+                                                />
                                                 <div
                                                     style={{
                                                         color: "#999",
