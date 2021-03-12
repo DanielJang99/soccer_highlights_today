@@ -24,7 +24,7 @@ export default function About() {
                 >
                     <Container textAlign="justified">
                         Built with Next.js, boostrap, and semantic-ui,{" "}
-                        <b>Soccer Highlights Today</b> uses API from{" "}
+                        <b>Soccer Highlights Today</b> uses open-source API from{" "}
                         <a href="https://www.scorebat.com/video-api">
                             Scorebat
                         </a>{" "}
@@ -48,8 +48,10 @@ export default function About() {
                 <Header as="h2">Feedback</Header>
                 <div style={{ fontSize: "1.2rem" }}>
                     If you have any suggestions or inquires, please feel free to
-                    contact <a href="mailto: daniel.jang.0621@gmail.com">me</a>{" "}
-                    with an email :)
+                    contact{" "}
+                    <a href="mailto: daniel.jang.0621@gmail.com">
+                        me with an email :)
+                    </a>
                 </div>
             </div>
         </>
