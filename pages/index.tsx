@@ -59,6 +59,6 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             matches: data,
         },
-        revalidate: 300,
+        revalidate: 1,
     };
 };

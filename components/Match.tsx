@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import { Header, Segment } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import MatchProps from "../api/interface";
 
 interface SingleMatchProps {
@@ -18,7 +18,6 @@ export default function Match({ match }: SingleMatchProps) {
                         subheader={match.competition.name}
                         floated="right"
                     />
-                    {/* </Segment> */}
 
                     <div
                         style={{

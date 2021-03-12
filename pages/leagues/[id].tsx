@@ -1,12 +1,11 @@
 import React from "react";
 import { Divider, Header, Grid, Image } from "semantic-ui-react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import axios from "axios";
 import styles from "../../styles/League.module.css";
 import Link from "next/link";
 import MatchProps from "../../api/interface";
 import Head from "next/head";
-import { MajorLeagues } from "../../FootballData";
 import { useRouter } from "next/router";
 
 type Params = {
@@ -77,7 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             Games: data,
         },
-        revalidate: 300,
+        revalidate: 1,
     };
 };
 

@@ -55,18 +55,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             match: data,
         },
-        revalidate: 300,
+        revalidate: 1,
     };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await axios.get("https://www.scorebat.com/video-api/v1");
     const data: MatchProps[] = await res.data;
-    const FilteredData: MatchProps[] = data.filter(
-        (game: MatchProps) =>
-            MajorTeams.includes(game.side1.name) ||
-            MajorTeams.includes(game.side2.name)
-    );
+    const FilteredData: MatchProps[] = data
+        .filter(
+            (game: MatchProps) =>
+                MajorTeams.includes(game.side1.name) ||
+                MajorTeams.includes(game.side2.name)
+        )
+        .slice(0, 5);
     const paths = FilteredData.map((game: MatchProps) => {
         return { params: { id: data.indexOf(game).toString() } };
     });
