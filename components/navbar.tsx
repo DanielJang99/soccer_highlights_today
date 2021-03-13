@@ -90,6 +90,11 @@ export default function Navbar() {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <Menu.Item
+                        name="about"
+                        active={activeItem === "about"}
+                        onClick={handleItemClick}
+                    />
                     <SearchNav />
                 </Menu>
             </Segment>
