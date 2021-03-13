@@ -8,11 +8,11 @@ import MatchProps from "../../api/interface";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-type Params = {
+interface Params {
     params: {
         id: string;
     };
-};
+}
 interface GamesProps {
     Games: MatchProps[];
 }

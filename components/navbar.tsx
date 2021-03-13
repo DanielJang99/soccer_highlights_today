@@ -1,6 +1,7 @@
 import { Menu, Segment, Dropdown, MenuItemProps } from "semantic-ui-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import SearchNav from "./SearchNav";
 
 export default function Navbar() {
     const [state, setState] = useState({ activeItem: "home" });
@@ -25,6 +26,7 @@ export default function Navbar() {
             router.push("/about");
         }
     };
+
     return (
         <div style={{ margin: "auto" }}>
             <Segment>
@@ -88,11 +90,7 @@ export default function Navbar() {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item
-                        name="about"
-                        active={activeItem === "about"}
-                        onClick={handleItemClick}
-                    />
+                    <SearchNav />
                 </Menu>
             </Segment>
         </div>
