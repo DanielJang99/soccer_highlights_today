@@ -4,7 +4,7 @@ import Match from "../../components/Match";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import MatchProps from "../../api/interface";
-import { MajorTeams } from "../../FootballData";
+import { MajorTeams } from "../../HardCodedData/FootballData";
 
 interface PostProps {
     match: MatchProps;

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { List, Header, ListItemProps } from "semantic-ui-react";
 import { LoadedMatches } from "../pages/index";
 import MatchProps from "../api/interface";
-import { MajorTeams } from "../FootballData";
+import { MajorTeams } from "../HardCodedData/FootballData";
 
 export default function DisplayCarousel() {
     const [SelectedIndex, setSelectedIndex] = useState<number>(0);
