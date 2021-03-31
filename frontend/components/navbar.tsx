@@ -41,18 +41,12 @@ export default function Navbar() {
                             Soccer Highlights Today
                         </div>
                     </Menu.Item>
-                    {/* <Menu.Item
+                    <Menu.Item
                         name="about"
                         active={activeItem === "about"}
                         onClick={handleItemClick}
-                    /> */}
-                    {/* <Menu.Item
-                        name="admin"
-                        active={activeItem === "admin"}
-                        onClick={() => {
-                            router.push("/admin");
-                        }}
-                    /> */}
+                    />
+
                     <Dropdown
                         item
                         text="Competitions"
@@ -90,12 +84,15 @@ export default function Navbar() {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item
-                        name="about"
-                        active={activeItem === "about"}
-                        onClick={handleItemClick}
-                    />
                     <SearchNav />
+                    <Menu.Item
+                        position="right"
+                        name="Log in"
+                        active={activeItem === "admin"}
+                        onClick={() => {
+                            router.push("/admin");
+                        }}
+                    />
                 </Menu>
             </Segment>
         </div>

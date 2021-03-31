@@ -19,7 +19,8 @@
         "**/*.ts",
         "**/*.tsx",
         "pages/view/[id].tsx",
-        "components/Flag.js"
+        "components/Flag.js",
+        "pages/signup.js"
     ],
     "exclude": ["node_modules"]
 }

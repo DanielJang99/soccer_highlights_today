@@ -22,11 +22,12 @@ export default function SearchNav() {
         setQuery("");
     };
     return (
-        <Menu.Menu position="right">
+        <Menu.Menu>
+            {/* <Menu.Menu position="right"> */}
             <Menu.Item name="search">
                 <Input
                     icon
-                    placeholder="Search for your team"
+                    placeholder="Search for a team..."
                     type="text"
                     onChange={handleChange}
                 >
