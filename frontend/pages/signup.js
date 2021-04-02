@@ -1,9 +1,11 @@
 import { Button, Form } from "semantic-ui-react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { AuthContext } from "./_app";
 
 export default function SignUp() {
+    const { auth, setAuth } = useContext(AuthContext);
     const router = useRouter();
     const [username, setUsername] = useState("");
     const [ps, setPs] = useState("");
@@ -35,10 +37,11 @@ export default function SignUp() {
             })
             .then((res) => {
                 if (res.status === 201) {
+                    setAuth(true);
                     router.push("/");
                 }
             })
-            .catch((e) => console.log(e));
+            .catch((e) => setWarningMsg(e));
     };
     return (
         <div style={{ padding: "100px 0", textAlign: "center" }}>

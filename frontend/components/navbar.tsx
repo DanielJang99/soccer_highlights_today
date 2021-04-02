@@ -1,11 +1,15 @@
 import { Menu, Segment, Dropdown, MenuItemProps } from "semantic-ui-react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import SearchNav from "./SearchNav";
+import { AuthContext } from "../pages/_app";
+import axios from "axios";
 
 export default function Navbar() {
     const [state, setState] = useState({ activeItem: "home" });
     const router = useRouter();
+    const { auth, setAuth } = useContext(AuthContext);
+
     let activeItem;
     if (router.pathname === "/") {
         activeItem = "home";
@@ -25,6 +29,18 @@ export default function Navbar() {
         } else if (name == "about") {
             router.push("/about");
         }
+    };
+
+    const handleLogout = () => {
+        axios
+            .post("/users/logout")
+            .then((res) => {
+                if (res.status === 200) {
+                    setAuth(false);
+                    router.push("/");
+                }
+            })
+            .catch((e) => console.log(e));
     };
 
     return (
@@ -85,14 +101,21 @@ export default function Navbar() {
                         </Dropdown.Menu>
                     </Dropdown>
                     <SearchNav />
-                    <Menu.Item
-                        position="right"
-                        name="Log in"
-                        active={activeItem === "admin"}
-                        onClick={() => {
-                            router.push("/admin");
-                        }}
-                    />
+                    {auth ? (
+                        <Menu.Item
+                            position="right"
+                            name="Log out"
+                            onClick={handleLogout}
+                        />
+                    ) : (
+                        <Menu.Item
+                            position="right"
+                            name="Log in"
+                            onClick={() => {
+                                router.push("/admin");
+                            }}
+                        />
+                    )}
                 </Menu>
             </Segment>
         </div>

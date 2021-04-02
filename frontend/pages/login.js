@@ -1,12 +1,14 @@
 import axios from "axios";
 import { Button, Form } from "semantic-ui-react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "./_app";
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [ps, setPs] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const { auth, setAuth } = useContext(AuthContext);
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -22,6 +24,7 @@ export default function Login() {
             .post("/users/login", { username, password: ps })
             .then((res) => {
                 if (res.status === 200) {
+                    setAuth(true);
                     router.push("/");
                 }
             })
