@@ -20,7 +20,8 @@
         "**/*.tsx",
         "pages/view/[id].tsx",
         "components/Flag.js",
-        "pages/signup.js"
+        "pages/signup.js",
+        "pages/teams/[teamName].js"
     ],
     "exclude": ["node_modules"]
 }

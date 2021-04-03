@@ -8,7 +8,6 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [ps, setPs] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
-    const { auth, setAuth } = useContext(AuthContext);
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -25,6 +24,7 @@ export default function Login() {
             .then((res) => {
                 if (res.status === 200) {
                     setAuth(true);
+                    localStorage.setItem("token", res.data.token);
                     router.push("/");
                 }
             })
@@ -40,7 +40,7 @@ export default function Login() {
         <div style={{ padding: "80px 0", textAlign: "center" }}>
             <Form>
                 <div
-                    style={{ color: "red", height: "20px", paddingBottom: 10 }}
+                    style={{ color: "red", height: "20px", paddingBottom: 30 }}
                 >
                     {errorMsg}
                 </div>

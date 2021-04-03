@@ -9,11 +9,13 @@
         "start:dev": "NODE_ENV='development' node server.js"
     },
     "dependencies": {
+        "@types/js-cookie": "^2.2.6",
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
         "express": "^4.17.1",
         "html-react-parser": "^1.2.4",
         "http-proxy-middleware": "^1.1.0",
+        "js-cookie": "^2.2.1",
         "next": "10.0.7",
         "nprogress": "^0.2.0",
         "react": "17.0.1",

@@ -70,14 +70,23 @@ export default function League({ Games }: GamesProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await axios.get("https://www.scorebat.com/video-api/v1");
-    const data: MatchProps[] = await res.data;
-    return {
-        props: {
-            Games: data,
-        },
-        revalidate: 1,
-    };
+    try {
+        const res = await axios.get("https://www.scorebat.com/video-api/v1");
+        const data: MatchProps[] = await res.data;
+        return {
+            props: {
+                Games: data,
+            },
+            revalidate: 1,
+        };
+    } catch (e) {
+        return {
+            redirect: {
+                destination: "/404",
+                statusCode: 307,
+            },
+        };
+    }
 };
 
 export const getStaticPaths = () => {
