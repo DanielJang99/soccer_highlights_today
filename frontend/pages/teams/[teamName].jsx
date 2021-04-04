@@ -1,8 +1,8 @@
 import React from "react";
 import { MajorTeams } from "../../HardCodedData/FootballData";
 import Head from "next/head";
-import { Divider, Header, Button } from "semantic-ui-react";
-
+import { Divider, Header } from "semantic-ui-react";
+import AddTeamButton from "../../components/AddTeamButton";
 export default function Team({ data }) {
     if (data) {
         return (
@@ -25,7 +25,7 @@ export default function Team({ data }) {
                     >
                         <Header as="h1">{data.strAlternate}</Header>
                         <div style={{ justifyContent: "end" }}>
-                            <Button color="green">Add to favorites</Button>
+                            <AddTeamButton team={data.strTeam} />
                         </div>
                     </div>
                     <Divider />
@@ -68,7 +68,6 @@ export async function getStaticProps(context) {
             "https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=" +
             context.params.teamName;
         const res = await fetch(url);
-
         const data = await res.json();
         return {
             props: {

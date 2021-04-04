@@ -21,6 +21,7 @@
         "pages/view/[id].tsx",
         "components/Flag.js",
         "pages/signup.js",
+        // "components/AddTeamButton.jsx",
         "pages/teams/[teamName].js"
     ],
     "exclude": ["node_modules"]

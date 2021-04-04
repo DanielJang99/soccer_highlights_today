@@ -23,8 +23,9 @@ export default function About() {
                     }}
                 >
                     <Container textAlign="justified">
-                        Built with Next.js, boostrap, and semantic-ui,{" "}
-                        <b>Soccer Highlights Today</b> uses open-source API from{" "}
+                        Built with Next.js, boostrap, semantic-ui, MongoDb, and
+                        Node.js, <b>Soccer Highlights Today</b> uses open-source
+                        API from{" "}
                         <a href="https://www.scorebat.com/video-api">
                             Scorebat
                         </a>{" "}

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const validator = require("validator");
 
 const userSchema = new mongoose.Schema(
     {
@@ -23,6 +22,13 @@ const userSchema = new mongoose.Schema(
                 }
             },
         },
+        favorites: [
+            {
+                team: {
+                    type: String,
+                },
+            },
+        ],
         tokens: [
             {
                 token: {

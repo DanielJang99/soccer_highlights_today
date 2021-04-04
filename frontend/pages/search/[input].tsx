@@ -25,7 +25,6 @@ export default function SearchQuery({ games }: GamesProps) {
                     ?.toLowerCase()
                     .includes(SearchedQuery.toLowerCase())
         );
-        console.log(SearchedGames);
         if (SearchedGames.length > 0) {
             return (
                 <>

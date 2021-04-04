@@ -1,5 +1,5 @@
 import { Menu, Segment, Dropdown, MenuItemProps } from "semantic-ui-react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import SearchNav from "./SearchNav";
 import axios from "axios";
@@ -13,8 +13,11 @@ export default function Navbar() {
         activeItem = "home";
     } else if (router.pathname === "/about") {
         activeItem = "about";
-    } else if (router.pathname === "/admin") {
-        activeItem = "admin";
+    } else if (
+        router.pathname === "/favorites/[team]" ||
+        router.pathname === "/favorites/all"
+    ) {
+        activeItem = "favorites";
     } else if (router.pathname === "/leagues") {
         activeItem = "leagues";
     }
@@ -26,6 +29,11 @@ export default function Navbar() {
             router.push("/");
         } else if (name == "about") {
             router.push("/about");
+        } else if (name == "favorites") {
+            if (!Cookies.get("token")) {
+                return alert("You must be logged in");
+            }
+            router.push("/favorites");
         }
     };
 
@@ -97,6 +105,12 @@ export default function Navbar() {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <Menu.Item
+                        name="favorites"
+                        active={activeItem === "favorites"}
+                        onClick={handleItemClick}
+                    />
+
                     <SearchNav />
                     {Cookies.get("token") ? (
                         <Menu.Item
