@@ -53,7 +53,7 @@ Displays latest highlights fetched from [scorebat api](https://www.scorebat.com/
 Sorts latest game highlights by top 4 UEFA leagues: Premier League, La Liga, Bundesliga, Serie A. Data fetched by _static generation_ for performance.
 <img src="./frontend/images/sc2.png" width="1200">
 
-\*_Search Page_-\*
+**Search Page**
 
 Displays latest game highlights of the team searched by the user. Data fetched by _server-side rendering_ for up-to-date data.
 <img src="./frontend/images/sc3.png" width="1200">
@@ -66,7 +66,7 @@ Displays the match highlight embedded. Users can click the name of the teams to 
 **Team Page**
 
 Displays team information obtained from [SportsDB](https://www.thesportsdb.com/api.php). Logged-in users can add their favorite teams.
-<img src="./frontend/images/sc6.png" width="1200">
+<img src="./frontend/images/sc6.jpg" width="1200">
 
 **Login Page**
 
@@ -76,4 +76,4 @@ Allows user to login or to create a new account. All passwords are hashed with b
 **Favorites Page**
 
 Allows logged-in users to view highlights of teams they have added to favorites.
-<img src="./frontend/images/sc7.png" width="1200">
+<img src="./frontend/images/sc7.jpg" width="1200">
