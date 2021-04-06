@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build && node server.js",
+        "build": "next build",
         "start": "next start",
         "start:dev": "env-cmd -f ./config/dev.env node server.js"
     },
