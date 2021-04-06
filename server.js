@@ -22,7 +22,8 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 app.prepare()
     .then(() => {
         const server = express();
-
+        server.use(express.json());
+        server.use(express.urlencoded());
         server.use("/users", createProxyMiddleware(apiPaths["/users"]));
 
         server.all("*", (req, res) => {
