@@ -7,7 +7,7 @@
     },
     "scripts": {
         "dev": "next dev",
-        "build": "next build && npm run start",
+        "build": "next build",
         "start": "NODE_ENV=production HOST=https://footballht-server.herokuapp.com node server.js",
         "start:dev": "env-cmd -f ./config/dev.env node server.js"
     },
@@ -33,5 +33,6 @@
         "@types/nprogress": "^0.2.0",
         "@types/react": "^17.0.2",
         "typescript": "^4.2.2"
-    }
+    },
+    "proxy": "https://footballht-server.herokuapp.com"
 }
