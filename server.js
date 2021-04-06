@@ -31,6 +31,7 @@ app.prepare()
         });
 
         server.listen(port, (err) => {
+            console.log(process.env.HOST);
             if (err) throw err;
             if (isDevelopment) {
                 console.log(`> Ready on http://localhost:${port}`);

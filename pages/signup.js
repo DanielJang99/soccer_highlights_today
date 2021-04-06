@@ -38,7 +38,7 @@ export default function SignUp() {
                     router.push("/");
                 }
             })
-            .catch((e) => setWarningMsg(e));
+            .catch((e) => console.log(e));
     };
     return (
         <div style={{ padding: "100px 0", textAlign: "center" }}>

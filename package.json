@@ -7,7 +7,7 @@
     },
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "build": "next build && npm run start",
         "start": "NODE_ENV=production HOST=https://footballht-server.herokuapp.com node server.js",
         "start:dev": "env-cmd -f ./config/dev.env node server.js"
     },
