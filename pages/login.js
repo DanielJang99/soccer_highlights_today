@@ -19,7 +19,10 @@ export default function Login() {
     const router = useRouter();
     function login() {
         axios
-            .post("/users/login", { username, password: ps })
+            .post("https://footballht-server.herokuapp.com/users/login", {
+                username,
+                password: ps,
+            })
             .then((res) => {
                 if (res.status === 200) {
                     router.push("/");
