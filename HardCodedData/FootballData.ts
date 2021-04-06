@@ -5,7 +5,6 @@ export const MajorTeams: string[] = [
     "Real Madrid",
     "Juventus",
     "Barcelona",
-    "PSG",
     "Chelsea",
     "Tottenham Hotspur",
     "Bayern Munich",
@@ -13,6 +12,23 @@ export const MajorTeams: string[] = [
     "Manchester City",
     "Manchester United",
     "Sevilla",
+];
+
+export const MajorTeamsForTeamInfo: string[] = [
+    "Arsenal",
+    "Liverpool",
+    "Ath Madrid",
+    "Real Madrid",
+    "Juventus",
+    "Barcelona",
+    "Chelsea",
+    "Tottenham Hotspur",
+    "Bayern Munich",
+    "Borussia Dortmund",
+    "Manchester City",
+    "Manchester United",
+    "Sevilla",
+    "Paris SG",
 ];
 
 export const MajorLeagues: string[] = [

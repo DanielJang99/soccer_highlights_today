@@ -3,6 +3,7 @@ import { Header } from "semantic-ui-react";
 import MatchProps from "../api/interface";
 import styles from "../styles/Match.module.css";
 import { useRouter } from "next/router";
+import React from "react";
 
 interface SingleMatchProps {
     match: MatchProps;

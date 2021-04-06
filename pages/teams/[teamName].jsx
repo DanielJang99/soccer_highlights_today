@@ -1,5 +1,5 @@
 import React from "react";
-import { MajorTeams } from "../../HardCodedData/FootballData";
+import { MajorTeamsForTeamInfo } from "../../HardCodedData/FootballData";
 import Head from "next/head";
 import { Divider, Header } from "semantic-ui-react";
 import AddTeamButton from "../../components/AddTeamButton";
@@ -77,7 +77,7 @@ export async function getStaticProps(context) {
     } catch (e) {
         return {
             redirect: {
-                destination: "/404",
+                destination: "/teamsError",
                 statusCode: 307,
             },
         };
@@ -85,7 +85,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const paths = MajorTeams.map((team) => ({
+    const paths = MajorTeamsForTeamInfo.map((team) => ({
         params: {
             teamName: team,
         },
