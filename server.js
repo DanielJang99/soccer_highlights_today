@@ -34,6 +34,8 @@ app.prepare()
             if (err) throw err;
             if (isDevelopment) {
                 console.log(`> Ready on http://localhost:${port}`);
+            } else {
+                console.log("Ready on production server");
             }
         });
     })
