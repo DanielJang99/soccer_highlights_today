@@ -2,14 +2,14 @@ const express = require("express");
 const next = require("next");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const apiPaths = {
     "/users": {
-        target: "http://localhost:3080",
+        target: process.env.HOST,
         pathRewrite: {
             "^/users": "/users",
         },
@@ -23,9 +23,7 @@ app.prepare()
     .then(() => {
         const server = express();
 
-        if (isDevelopment) {
-            server.use("/users", createProxyMiddleware(apiPaths["/users"]));
-        }
+        server.use("/users", createProxyMiddleware(apiPaths["/users"]));
 
         server.all("*", (req, res) => {
             return handle(req, res);
@@ -33,7 +31,9 @@ app.prepare()
 
         server.listen(port, (err) => {
             if (err) throw err;
-            console.log(`> Ready on http://localhost:${port}`);
+            if (isDevelopment) {
+                console.log(`> Ready on http://localhost:${port}`);
+            }
         });
     })
     .catch((err) => {
