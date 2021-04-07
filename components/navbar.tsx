@@ -38,8 +38,9 @@ export default function Navbar() {
     };
 
     const handleLogout = () => {
+        const url = process.env.HOST + "/users/logout";
         axios
-            .post("/users/logout")
+            .post(url)
             .then((res) => {
                 if (res.status === 200) {
                     router.push("/");

@@ -18,13 +18,16 @@ export default function Login() {
 
     const router = useRouter();
     function login() {
+        const url = process.env.HOST;
         axios
-            .post("https://footballht-server.herokuapp.com/users/login", {
+            .post(url, {
                 username,
                 password: ps,
             })
             .then((res) => {
                 if (res.status === 200) {
+                    console.log(res.cookie);
+
                     router.push("/");
                 }
             })

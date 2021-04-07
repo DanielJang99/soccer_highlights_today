@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 
 export default function AddTeamButton({ team }) {
     const [isAdded, setIsAdded] = useState(false);
+    const url = process.env.HOST + `/users/favorites/${team}`;
     useEffect(async () => {
-        const res = await axios.get(`/users/favorites/${team}`);
+        const res = await axios.get(url);
         setIsAdded(res.data);
     }, []);
     const handleAdd = () => {
@@ -14,7 +15,7 @@ export default function AddTeamButton({ team }) {
             return alert("You must first log in ");
         }
         axios
-            .post(`/users/favorites/${team}`)
+            .post(url)
             .then((res) => {
                 if (res.status === 201) {
                     setIsAdded(true);

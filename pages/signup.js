@@ -28,13 +28,15 @@ export default function SignUp() {
             setWarningMsg("You must re-enter the same password");
             return;
         }
+        const url = process.env.HOST + "/user";
         axios
-            .post("/users", {
+            .post(url, {
                 username,
                 password: ps,
             })
             .then((res) => {
                 if (res.status === 201) {
+                    console.log(res.cookie);
                     router.push("/");
                 }
             })

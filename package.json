@@ -8,8 +8,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start -p $PORT",
-        "start:dev": "env-cmd -f ./config/dev.env node server.js"
+        "start": "next start",
+        "start:dev": "env-cmd -f ./config/dev.env next dev"
     },
     "dependencies": {
         "@types/js-cookie": "^2.2.6",
