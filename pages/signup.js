@@ -2,6 +2,7 @@ import { Button, Form } from "semantic-ui-react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function SignUp() {
     const router = useRouter();
@@ -36,7 +37,8 @@ export default function SignUp() {
             })
             .then((res) => {
                 if (res.status === 201) {
-                    console.log(res.cookie);
+                    console.log(res.body);
+                    Cookies.set("token", res.body.token);
                     router.push("/");
                 }
             })
