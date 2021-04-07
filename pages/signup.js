@@ -28,7 +28,7 @@ export default function SignUp() {
             setWarningMsg("You must re-enter the same password");
             return;
         }
-        const url = process.env.NEXT_PUBLIC_API_URL + "/user";
+        const url = process.env.NEXT_PUBLIC_API_URL + "/users";
         axios
             .post(url, {
                 username,
