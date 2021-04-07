@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function AddTeamButton({ team }) {
     const [isAdded, setIsAdded] = useState(false);
-    const url = process.env.HOST + `/users/favorites/${team}`;
+    const url = process.env.NEXT_PUBLIC_API_URL + `/users/favorites/${team}`;
     useEffect(async () => {
         const res = await axios.get(url);
         setIsAdded(res.data);

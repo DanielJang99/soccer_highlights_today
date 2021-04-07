@@ -18,7 +18,7 @@ export default function Login() {
 
     const router = useRouter();
     function login() {
-        const url = process.env.HOST;
+        const url = process.env.NEXT_PUBLIC_API_URL;
         axios
             .post(url, {
                 username,

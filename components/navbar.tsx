@@ -38,7 +38,7 @@ export default function Navbar() {
     };
 
     const handleLogout = () => {
-        const url = process.env.HOST + "/users/logout";
+        const url = process.env.NEXT_PUBLIC_API_URL + "/users/logout";
         axios
             .post(url)
             .then((res) => {
